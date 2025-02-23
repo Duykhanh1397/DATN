@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    // GET: Lấy danh sách danh mục
+    // Lấy danh sách danh mục
     public function index()
     {
         $categories = Category::all();
         return response()->json($categories);
     }
 
-    // POST: Tạo danh mục mới
+    // Tạo danh mục mới
     public function store(Request $request)
     {
         $request->validate([
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         return response()->json(['message' => 'Danh mục được tạo thành công!', 'category' => $category], 201);
     }
 
-    // GET: Xem chi tiết danh mục
+    // Xem chi tiết danh mục
     public function show($id)
     {
         $category = Category::find($id);
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         return response()->json($category);
     }
 
-    // PUT: Cập nhật danh mục
+    // Cập nhật danh mục
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
@@ -55,7 +55,7 @@ class CategoryController extends Controller
         return response()->json(['message' => 'Cập nhật thành công!', 'category' => $category]);
     }
 
-    // DELETE: Xóa danh mục
+    //  Xóa danh mục
     public function destroy($id)
     {
         $category = Category::find($id);
