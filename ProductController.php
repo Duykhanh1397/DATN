@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    // GET: Lấy danh sách sản phẩm với thông tin liên quan
+    // Lấy danh sách sản phẩm với thông tin liên quan
     public function index()
     {
         $products = DB::table('products')
@@ -31,7 +31,7 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-    // POST: Thêm sản phẩm mới
+    // Thêm sản phẩm mới
     public function store(Request $request)
     {
         $request->validate([
@@ -46,7 +46,7 @@ class ProductController extends Controller
         return response()->json(['message' => 'Sản phẩm được tạo thành công!', 'product' => $product], 201);
     }
 
-    // GET: Lấy thông tin chi tiết sản phẩm
+    //  Lấy thông tin chi tiết sản phẩm
     public function show($id)
     {
         $product = Product::with(['category', 'variants.values'])->find($id);
@@ -58,7 +58,7 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
-    // PUT: Cập nhật sản phẩm
+    // Cập nhật sản phẩm
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
@@ -72,7 +72,7 @@ class ProductController extends Controller
         return response()->json(['message' => 'Cập nhật thành công!', 'product' => $product]);
     }
 
-    // DELETE: Xóa sản phẩm
+    // Xóa sản phẩm
     public function destroy($id)
     {
         $product = Product::find($id);
